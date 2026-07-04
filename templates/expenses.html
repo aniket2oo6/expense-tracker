@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Expenses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>My Expenses</h1>
+
+     <nav>
+        <a href="/">View Expenses</a> |
+        <a href="/add">Add Expense</a> |
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+
+    <table border = '1'>
+      <tr>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Note</th>
+      </tr>
+
+      {% for expense in expenses %}
+      <tr>
+        <td>{{ expense['amount'] }}</td>
+        <td>{{ expense['category'] }}</td>
+        <td>{{ expense['date'] }}</td>
+        <td>{{ expense['note'] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <a href = '/add'>Add New Expense</a>
+
+    <form method = 'POST' action = '/reset' onsubmit = "return confirm('Are you sure you want to delete all expenses?')">
+        <button type = 'submit'>Reset All Expenses</button>
+    </form>
+</body>
+</html>

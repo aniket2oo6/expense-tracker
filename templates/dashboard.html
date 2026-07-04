@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Spending Dashboard</h1>
+
+     <nav>
+        <a href="/">View Expenses</a> |
+        <a href="/add">Add Expense</a> |
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+
+    {% if no_data %}
+        <p>No expenses yet — add some to see your spending breakdown!</p>
+    {% else %}
+        <img src="{{ url_for('static', filename='chart.png') }}" alt="Spending chart">
+    {% endif %}
+
+    <br><br>
+    <a href="/">Back to Expenses</a>
+</body>
+</html>
